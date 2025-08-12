@@ -1,82 +1,74 @@
-# Desafio de Estágio: Notificador WhatsApp com Python 🚀
+# Desafio de Estágio - Notificador de Contatos
 
-Este projeto é uma solução para o desafio de estágio da b2bflow. O script em Python lê contatos de um banco de dados na plataforma Supabase e envia uma mensagem de saudação personalizada para cada um via WhatsApp, utilizando a Z-API.
+Este projeto em Python lê uma lista de contatos de um banco de dados Supabase e envia uma mensagem personalizada de "Olá" para cada um via WhatsApp, utilizando a Z-API.
 
-## ✨ Funcionalidades
+## Funcionalidades
 
--   Conexão segura com o banco de dados Supabase para buscar a lista de contatos.
--   Envio de mensagens de texto personalizadas através da Z-API.
--   Gerenciamento de credenciais e chaves de API de forma segura usando variáveis de ambiente (`.env`).
--   Logging detalhado para acompanhar cada passo da execução do script.
--   Código organizado e robusto com tratamento de erros de conexão e de API.
+-   Conexão segura com o banco de dados Supabase.
+-   Leitura de contatos de uma tabela específica.
+-   Envio de mensagens personalizadas via Z-API.
+-   Uso de variáveis de ambiente para proteger credenciais.
+-   Logs detalhados para acompanhar a execução.
 
-## 🛠️ Tecnologias Utilizadas
-
--   **Linguagem:** Python 3
--   **Banco de Dados:** Supabase
--   **API de Mensageria:** Z-API
--   **Bibliotecas Principais:** `requests`, `supabase-py`, `python-dotenv`
-
-## 🚀 Como Executar o Projeto
-
-Siga os passos abaixo para configurar e rodar o projeto em sua máquina local.
+## Setup do Projeto
 
 ### 1. Pré-requisitos
 
--   Python 3.8 ou superior instalado.
--   Conta gratuita no [Supabase](https://supabase.com/).
--   Conta gratuita na [Z-API](https://z-api.io/) com uma instância ativa e conectada.
+-   Python 3.8+
+-   Uma conta no [Supabase](https://supabase.com/)
+-   Uma conta na [Z-API](https://z-api.io/)
 
 ### 2. Instalação
 
-1.  **Clone o repositório:**
+1.  Clone o repositório:
     ```bash
-    git clone [URL_DO_SEU_REPOSITORIO_AQUI]
-    cd [NOME_DO_SEU_REPOSITORIO_AQUI]
+    git clone [URL_DO_SEU_REPOSITORIO]
+    cd [NOME_DO_SEU_REPOSITORIO]
     ```
 
-2.  **Crie e ative um ambiente virtual:**
+2.  Crie e ative um ambiente virtual:
     ```bash
-    # Para Unix/macOS
-    python3 -m venv venv
-    source venv/bin/activate
-
-    # Para Windows (PowerShell)
     python -m venv venv
-    .\venv\Scripts\activate
+    source venv/bin/activate  # No Windows: venv\Scripts\activate
     ```
 
-3.  **Instale as dependências:**
+3.  Instale as dependências:
     ```bash
     pip install -r requirements.txt
     ```
 
-### 3. Configuração do Banco de Dados (Supabase)
+### 3. Configuração do Supabase
 
--   No seu projeto Supabase, vá para **Table Editor** e crie uma nova tabela chamada `contatos`.
+-   Crie um novo projeto no Supabase.
+-   Vá para o **Table Editor** e crie uma nova tabela chamada `contatos`.
 -   Adicione as seguintes colunas:
+    -   `id` (int8, chave primária - criado por padrão)
+    -   `created_at` (timestamptz - criado por padrão)
     -   `nome` (tipo `text`)
-    -   `numero` (tipo `text`)  <-- **Atenção:** O nome da coluna deve ser `numero`.
--   Insira os contatos de teste. O telefone deve estar no formato internacional: `55` (código do país) + `11` (DDD) + `999998888` (número).
+    -   `telefone` (tipo `text`, inclua o código do país e DDD, ex: 5511999998888)
+-   Insira alguns contatos de teste na tabela.
 
 ### 4. Variáveis de Ambiente
 
 1.  Crie um arquivo chamado `.env` na raiz do projeto.
-2.  Copie o conteúdo abaixo para o arquivo e **substitua os valores pelas suas credenciais**:
-    ```env
-    # Credenciais do Supabase (encontre em Project Settings > API)
+2.  Copie o conteúdo do exemplo abaixo e preencha com suas credenciais:
+
+    ```
+    # Supabase
     SUPABASE_URL="SUA_URL_DO_PROJETO_SUPABASE"
     SUPABASE_KEY="SUA_CHAVE_ANON_PUBLICA_DO_SUPABASE"
 
-    # Credenciais da Z-API (encontre no painel da sua instância)
+    # Z-API
     ZAPI_INSTANCE_ID="SEU_ID_DE_INSTANCIA_NA_ZAPI"
     ZAPI_TOKEN="SEU_TOKEN_DA_INSTANCIA_NA_ZAPI"
     ```
 
-### 5. Execução
+### 5. Como Rodar
 
-Com o ambiente virtual ativado e o `.env` preenchido, execute o seguinte comando no seu terminal:
+Com o ambiente virtual ativado e o `.env` configurado, execute o seguinte comando no terminal:
+
 ```bash
 python main.py
 ```
-Acompanhe os logs no terminal para ver o progresso do envio das mensagens.
+
+O terminal exibirá os logs do processo de envio.
