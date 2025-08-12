@@ -53,12 +53,10 @@ Para rodar este projeto, siga os passos abaixo.
 2.  Preencha o arquivo com suas chaves, conforme o exemplo abaixo:
     ```env
     # Credenciais do Supabase (encontre em Project Settings > API)
-    SUPABASE_URL="SUA_URL_DO_PROJETO_SUPABASE"
-    SUPABASE_KEY="SUA_CHAVE_ANON_PUBLICA_DO_SUPABASE"
-
-    # Credenciais da Z-API (encontre no painel da sua instância)
-    ZAPI_INSTANCE_ID="SEU_ID_DE_INSTANCIA_NA_ZAPI"
-    ZAPI_TOKEN="SEU_TOKEN_DA_INSTANCIA_NA_ZAPI"
+    SUPABASE_URL="https://teibkygurtwbehkbqtxe.supabase.co"
+SUPABASE_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRlaWJreWd1cnR3YmVoa2JxdHhlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUwMzQ4OTYsImV4cCI6MjA3MDYxMDg5Nn0.in0-N6iXJkFqpP1ld0Ai_OGZArYor9gZoOw0MfN-3E0"
+ZAPI_INSTANCE_ID="3E59F621F26020AE8252DEA70E730544"
+ZAPI_TOKEN="83B6B249A4E142779453DC93"
     ```
 
 ### 4. Execução do Script
