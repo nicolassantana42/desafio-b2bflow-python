@@ -1,74 +1,83 @@
-# Desafio de Estágio - Notificador de Contatos
+# Solução: Desafio de Estágio b2bflow ⚡
 
-Este projeto em Python lê uma lista de contatos de um banco de dados Supabase e envia uma mensagem personalizada de "Olá" para cada um via WhatsApp, utilizando a Z-API.
+Este repositório contém a solução para o desafio técnico para a vaga de Estágio em Desenvolvimento Python na b2bflow.
 
-## Funcionalidades
+O projeto consiste em um script Python que cumpre a missão de ler contatos de um banco de dados Supabase e enviar uma mensagem de saudação personalizada via WhatsApp, utilizando a Z-API.
 
--   Conexão segura com o banco de dados Supabase.
--   Leitura de contatos de uma tabela específica.
--   Envio de mensagens personalizadas via Z-API.
--   Uso de variáveis de ambiente para proteger credenciais.
--   Logs detalhados para acompanhar a execução.
+## ✅ Requisitos Cumpridos
 
-## Setup do Projeto
+O projeto foi desenvolvido seguindo todas as regras estipuladas:
 
-### 1. Pré-requisitos
+- [x] **Stack:** Utiliza Python, Supabase e Z-API, todos com planos gratuitos.
+- [x] **Fonte dos Dados:** Os contatos são lidos dinamicamente do banco de dados no Supabase.
+- [x] **Mensagem:** A mensagem enviada é exatamente "Olá {{nome_contato}}, tudo bem com você?", com o nome personalizado.
+- [x] **Entrega:** O código está publicado em um repositório público no GitHub.
+- [x] **Boas Práticas:** O código inclui tratamento de erros, logs simples, uso de `.env` para segurança e commits objetivos.
 
--   Python 3.8+
--   Uma conta no [Supabase](https://supabase.com/)
--   Uma conta na [Z-API](https://z-api.io/)
+## 🛠️ Setup e Execução
 
-### 2. Instalação
+Para rodar este projeto, siga os passos abaixo.
 
-1.  Clone o repositório:
+### 1. Configuração do Banco de Dados (Supabase)
+
+-   Crie uma conta gratuita e um novo projeto no **Supabase**.
+-   No "Table Editor", crie uma nova tabela chamada `contatos`.
+-   Adicione as seguintes colunas à tabela:
+    -   `nome` (tipo `text`)
+    -   `numero` (tipo `text`)
+-   Insira os contatos para teste. O número deve seguir o formato internacional (ex: `5511999998888`).
+
+### 2. Configuração do Ambiente Local
+
+1.  **Clone o repositório:**
     ```bash
-    git clone [URL_DO_SEU_REPOSITORIO]
-    cd [NOME_DO_SEU_REPOSITORIO]
+    git clone [https://github.com/nicolassantana42/desafio-b2bflow-python.git](https://github.com/nicolassantana42/desafio-b2bflow-python.git)
+    cd desafio-b2bflow-python
     ```
-
-2.  Crie e ative um ambiente virtual:
+2.  **Crie e ative um ambiente virtual:**
     ```bash
-    python -m venv venv
-    source venv/bin/activate  # No Windows: venv\Scripts\activate
+    # Para Unix/macOS:
+    python3 -m venv venv && source venv/bin/activate
+    
+    # Para Windows (PowerShell):
+    python -m venv venv; .\venv\Scripts\activate
     ```
-
-3.  Instale as dependências:
+3.  **Instale as dependências:**
     ```bash
     pip install -r requirements.txt
     ```
 
-### 3. Configuração do Supabase
-
--   Crie um novo projeto no Supabase.
--   Vá para o **Table Editor** e crie uma nova tabela chamada `contatos`.
--   Adicione as seguintes colunas:
-    -   `id` (int8, chave primária - criado por padrão)
-    -   `created_at` (timestamptz - criado por padrão)
-    -   `nome` (tipo `text`)
-    -   `telefone` (tipo `text`, inclua o código do país e DDD, ex: 5511999998888)
--   Insira alguns contatos de teste na tabela.
-
-### 4. Variáveis de Ambiente
+### 3. Variáveis de Ambiente
 
 1.  Crie um arquivo chamado `.env` na raiz do projeto.
-2.  Copie o conteúdo do exemplo abaixo e preencha com suas credenciais:
-
-    ```
-    # Supabase
+2.  Preencha o arquivo com suas chaves, conforme o exemplo abaixo:
+    ```env
+    # Credenciais do Supabase (encontre em Project Settings > API)
     SUPABASE_URL="SUA_URL_DO_PROJETO_SUPABASE"
     SUPABASE_KEY="SUA_CHAVE_ANON_PUBLICA_DO_SUPABASE"
 
-    # Z-API
+    # Credenciais da Z-API (encontre no painel da sua instância)
     ZAPI_INSTANCE_ID="SEU_ID_DE_INSTANCIA_NA_ZAPI"
     ZAPI_TOKEN="SEU_TOKEN_DA_INSTANCIA_NA_ZAPI"
     ```
 
-### 5. Como Rodar
+### 4. Execução do Script
 
-Com o ambiente virtual ativado e o `.env` configurado, execute o seguinte comando no terminal:
+-   Com o ambiente virtual ativado e o `.env` configurado, rode o comando:
+    ```bash
+    python main.py
+    ```
+-   Os logs da execução aparecerão no terminal.
 
-```bash
-python main.py
+## 📂 Estrutura do Projeto
+
+A organização dos arquivos foi mantida simples e clara para facilitar a avaliação:
 ```
-
-O terminal exibirá os logs do processo de envio.
+desafio-b2bflow-python/
+│
+├── .gitignore        # Ignora arquivos sensíveis e desnecessários
+├── main.py           # Script principal com toda a lógica
+├── requirements.txt  # Lista de dependências Python
+├── README.md         # Esta documentação
+└── .env              # Arquivo local para as credenciais (não versionado)
+```
