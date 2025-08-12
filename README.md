@@ -32,7 +32,7 @@ Para rodar este projeto, siga os passos abaixo.
 1.  **Clone o repositório:**
     ```bash
     git clone [https://github.com/nicolassantana42/desafio-b2bflow-python.git](https://github.com/nicolassantana42/desafio-b2bflow-python.git)
-    cd desafio-b2bflow-python
+    cd \supabase-zapi-challenge
     ```
 2.  **Crie e ative um ambiente virtual:**
     ```bash
